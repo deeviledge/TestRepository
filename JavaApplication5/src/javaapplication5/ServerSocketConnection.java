@@ -52,8 +52,8 @@ public class ServerSocketConnection {
             
             /* 判定結果をクライアントに送信する */
             ObjectOutputStream oos =new ObjectOutputStream(socket.getOutputStream());
-            oos.writeObject(data);
-            oos.flush();
+            oos.writeObject(data);//送信したいデータのをソケットオブジェクトへ書き出す
+            oos.flush();//書き出したデータを送り出す
         }catch(IOException e){
             e.printStackTrace();
             System.out.println("ソケットの接続が確立されていません");
@@ -66,11 +66,13 @@ public class ServerSocketConnection {
 }
 //データの送信
 //        ObjectOutputStream oos =new ObjectOutputStream(socket.getOutputStream());
-//        oos.writeObject(send_data);
-//        oos.flush();
+//        oos.writeObject(send_data);//送信したいデータのをソケットオブジェクトへ書き出す
+//        oos.flush();//書き出したデータ(メモリ上に待機)を送り出す
 //
 //データの受信
 //        ObjectInputStream ois =new ObjectInputStream(socket.getInputStream());
-//        (型宣言) receive_data = (キャスト)ois.readObject();
+//        (型宣言) receive_data = (キャスト)ois.readObject();//読み込みの際は必ずキャストする
 //        (型宣言) get_data = receive_data.intValue();
 //      
+//
+//
