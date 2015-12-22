@@ -15,14 +15,14 @@ import java.io.*;
  */
 public class SocketConnectionServer {
     
-    private int port_no;
+    private int port_num;
     private String inform_sentence;
 
     
-    public SocketConnectionServer(int port_num){
+    public SocketConnectionServer(int port_Num){
         try{
-            this.port_no=port_num;
-            System.out.println("接続クライアント："+this.port_no+"/使用するポート："+this.port_no);
+            this.port_num=port_Num;
+            System.out.println("接続クライアント："+this.port_num+"/使用するポート："+this.port_num);
         }catch(NullPointerException e){
             System.out.println("接続する相手のアドレスまたはポート番号がうけとれませんでした");
         }
