@@ -5,21 +5,24 @@
  */
 package javaapplication5;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.io.*;
 
 /**
  *
  * @author tatoo
  */
-public class SocketConnection {
-    
+public class SocketConnectionClient {
     private int port_no;
     private String inform_sentence;
 
     
-    public SocketConnection(int port_num){
+    public SocketConnectionClient(int port_num){
         try{
             this.port_no=port_num;
             System.out.println("接続クライアント："+this.port_no+"/使用するポート："+this.port_no);
@@ -50,7 +53,6 @@ public class SocketConnection {
         }
         
     }
-    
-    
+
     
 }
