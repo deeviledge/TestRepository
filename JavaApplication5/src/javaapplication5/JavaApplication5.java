@@ -18,13 +18,7 @@ public class JavaApplication5 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        try{
-            ServerSocket serverSocket=new ServerSocket();
-            Socket socket=serverSocket.accept();      
-            System.out.println(socket.getInetAddress()+"接続完了");
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        
     }
     
 }
