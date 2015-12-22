@@ -5,21 +5,25 @@
  */
 package javaapplication5;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.io.*;
 
 /**
  *
  * @author tatoo
  */
-public class SocketConnectionServer {
-    
+public class ClientSocketConnection {
     private int port_num;
+    private String server_ip;
     private String inform_sentence;
 
     
-    public SocketConnectionServer(int port_Num){
+    public ClientSocketConnection(int port_Num){
         try{
             this.port_num=port_Num;
             System.out.println("接続クライアント："+this.port_num+"/使用するポート："+this.port_num);
@@ -32,25 +36,23 @@ public class SocketConnectionServer {
     public void connection_start(){
         try{
             //サーバーソケットの生成
-            ServerSocket serverSocket=new ServerSocket();
+            Socket Socket=new Socket();
             
             //クライアントからの接続を待つ
-            Socket socket=serverSocket.accept();      
-            System.out.println(socket.getInetAddress()+"接続完了");
-            
-            //出力ストリームを取得
-            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            // 入力ストリームを取得
-            InputStream	is = socket.getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(is));
+//            Socket socket=Socket.accept();      
+//            System.out.println(socket.getInetAddress()+"接続完了");
+//            
+//            //出力ストリームを取得
+//            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+//            // 入力ストリームを取得
+//            InputStream	is = socket.getInputStream();
+//            BufferedReader in = new BufferedReader(new InputStreamReader(is));
 
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("ソケットの接続が確立されていません");
-        }
-        
+        }    
     }
-    
-    
+
     
 }
