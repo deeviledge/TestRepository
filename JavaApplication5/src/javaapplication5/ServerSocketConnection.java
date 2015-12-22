@@ -7,6 +7,8 @@ package javaapplication5;
 
 import java.io.*;
 import java.net.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,12 +41,11 @@ public class ServerSocketConnection {
             
             //クライアントからの接続を待つ
             Socket socket=serverSocket.accept();  
-            System.out.println(socket.getInetAddress()+"接続完了");
+            System.out.println(socket.getInetAddress()+"接続完了");//接続先のあd例を返して表示
             
             /* 年齢を受信する */
             ObjectInputStream ois =new ObjectInputStream(socket.getInputStream());
             Integer data = (Integer)ois.readObject();
-
 
             /* 飲酒の可否を判定する */
            //受け取ったデータのなんかしらの処理
@@ -53,9 +54,12 @@ public class ServerSocketConnection {
             ObjectOutputStream oos =new ObjectOutputStream(socket.getOutputStream());
             oos.writeObject(data);
             oos.flush();
-        }catch(Exception e){
+        }catch(IOException e){
             e.printStackTrace();
             System.out.println("ソケットの接続が確立されていません");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServerSocketConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ObjectInputStreamまたはObjectOutputStreamが生成できません");
         }
         
     }
