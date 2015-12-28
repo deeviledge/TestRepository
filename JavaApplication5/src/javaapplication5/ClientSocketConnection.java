@@ -44,8 +44,13 @@ public class ClientSocketConnection {
         System.out.println("▼▼▼▼▼ソケット通信開始▼▼▼▼▼");
         try{
             //サーバーソケットの生成
-            Socket socket=new Socket(server_ip,port_num);
+            Socket socket=new Socket(server_ip,port_num);//
             System.out.println("Socket生成完了/サーバーに接続要求を送信");
+            while(socket.isConnected())
+            {
+                System.out.println("ServerSocketからの応答を待機中...");
+            }
+            System.out.println(socket.getInetAddress()+"接続完了");//接続先のあd例を返して表示
             
             /* サーバに年齢を送信する */
             ObjectOutputStream oos =new ObjectOutputStream(socket.getOutputStream());
@@ -64,6 +69,12 @@ public class ClientSocketConnection {
 
     
 }
+
+//Socket socket=new Socket(severIP,portNum);//serverIPをIPにもつコンピュータのportNum番ポートに接続の要求を送信する
+//
+//ServerSocket serversoc=new ServerSocket(portNum);
+//Socket socket=serverxoc.accept();
+//
 //データの送信
 //        ObjectOutputStream oos =new ObjectOutputStream(socket.getOutputStream());
 //        oos.writeObject(send_data);//送信したいデータのをソケットオブジェクトへ書き出す
