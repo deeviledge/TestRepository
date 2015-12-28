@@ -36,13 +36,16 @@ public class ServerSocketConnection {
         System.out.println("▼▼▼▼▼ソケット通信開始▼▼▼▼▼");
         try{
             //サーバーソケットの生成
-            ServerSocket serverSocket=new ServerSocket();
-            System.out.println("ServerSocket生成完了/ポートを監視中");
+            ServerSocket serverSocket=new ServerSocket(port_num);
+            System.out.println("ServerSocket生成完了");
             
             //クライアントからの接続を待つ
-            Socket socket=serverSocket.accept();  
+            Socket socket=serverSocket.accept();
+            while(socket.isConnected())
+            {
+                System.out.println("Socketからの接続要求を待機中...");
+            }
             System.out.println(socket.getInetAddress()+"接続完了");//接続先のあd例を返して表示
-            
             /* 年齢を受信する */
             ObjectInputStream ois =new ObjectInputStream(socket.getInputStream());
             Integer data = (Integer)ois.readObject();
@@ -64,6 +67,12 @@ public class ServerSocketConnection {
         
     }
 }
+
+//Socket socket=new Socket(severIP,portNum);//serverIPをIPにもつコンピュータのportNum番ポートに接続の要求を送信する
+//
+//ServerSocket serversoc=new ServerSocket(portNum);
+//Socket socket=serverxoc.accept();
+//
 //データの送信
 //        ObjectOutputStream oos =new ObjectOutputStream(socket.getOutputStream());
 //        oos.writeObject(send_data);//送信したいデータのをソケットオブジェクトへ書き出す
