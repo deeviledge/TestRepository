@@ -19,6 +19,12 @@ public class JavaApplication5 {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        //クライアント向けのコード
+        //String serverIP=new EditOptionXml().getIP();
+        //private final int Round_Port=;
+        //SendFrom(SendToIP,serverIP,Port);
+
+        
     }
     
 }
